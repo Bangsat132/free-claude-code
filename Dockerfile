@@ -18,4 +18,4 @@ COPY . .
 
 RUN uv sync --locked --no-dev --no-editable
 
-CMD ["fcc-server"]
+CMD ["uv", "run", "fcc-server"]
