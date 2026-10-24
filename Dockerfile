@@ -10,6 +10,9 @@ ENV UV_LINK_MODE=copy
 ENV UV_PROJECT_ENVIRONMENT=/app/.venv
 ENV PATH="/app/.venv/bin:$PATH"
 
+# Provide a version when Git metadata is unavailable in Docker
+ENV SETUPTOOLS_SCM_PRETEND_VERSION=0.1.0
+
 COPY . .
 
 RUN uv --version
