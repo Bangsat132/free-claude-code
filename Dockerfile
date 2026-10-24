@@ -7,15 +7,12 @@ WORKDIR /app
 
 ENV PYTHONUNBUFFERED=1
 ENV UV_LINK_MODE=copy
+ENV UV_PROJECT_ENVIRONMENT=/app/.venv
 ENV PATH="/app/.venv/bin:$PATH"
-
-COPY pyproject.toml uv.lock README.md LICENSE ./
-
-RUN uv --version
-RUN uv sync --locked --no-dev --no-install-project
 
 COPY . .
 
-RUN uv sync --locked --no-dev --no-editable
+RUN uv --version
+RUN uv sync --locked --no-dev
 
 CMD ["uv", "run", "fcc-server"]
